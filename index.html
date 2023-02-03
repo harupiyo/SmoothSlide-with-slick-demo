@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SmoothSlider</title>
+		<meta charset="UTF-8">
+		<!-- (1) slick に必要なCSS － ここから -->
+		<link rel="stylesheet" href="./slick/slick.css">
+		<style>
+			/*
+			   ページ表示開始直後のスライダーのフェードイン
+				   （画像読み込みを待つ意味がある）
+			 */
+			.slick {
+				transition: all ease-in 3s;	/* ３秒かけてフェードイン */
+				opacity: 0
+			}
+			.slick.show {
+				opacity: 1
+			}
+		</style>
+		<!-- (1) slick に必要なCSS － ここまで -->
+	</head>
+	<body>
+		<!-- (2) slick に必要なHTML － ここから -->
+		<div class="slick">
+			<!-- ここに並べる画像の幅が画面幅を超えること。そうしないと空白領域が見えてしまう。 -->
+			<div><img src="https://bxslider.com/assets/images/coffee1.jpg" width="800" height="600" alt=""></div>
+			<div><img src="https://bxslider.com/assets/images/coffee2.jpg" width="800" height="600" alt=""></div>
+			<div><img src="https://bxslider.com/assets/images/coffee3.jpg" width="800" height="600" alt=""></div>
+		</div>
+		<!-- (2) slick に必要なHTML － ここまで -->
+		<!-- (3) slick に必要なJavaScript － ここから -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script src="./slick/slick.min.js"></script>
+		<script>
+			$(function(){
+				$(".slick").slick({
+					speed: 30000,			// 次の画像に切り替わるまでの時間(30,000=30秒)
+					autoplay: true,			// 自動再生
+					autoplaySpeed: 0,		// 次のスライドをめくるまでの待機時間. 0 で 切れ目なく再生 
+					cssEase: 'linear',		// アニメーションの緩急. 'linear'(直線的) でスクロール速度が均一化
+					pauseOnFocus: false,	// マウスカーソルを画像の上に重ねた時に画像が明るく選択
+					pauseOnHover: false,	// 		されるのを防ぐ
+					arrows: false,			// スライダーの両端に矢印アイコンが出るのを禁止
+					variableWidth: true,	// 1. サイズ違いの画像を含めることができるようにする 2. 画像間の隙間が詰まり、歯抜けにならない
+				});
+				$(".slick").addClass('show');
+			});
+		</script>
+		<!-- (3) slick に必要なJavaScript － ここまで -->
+	</body>
+</html>
